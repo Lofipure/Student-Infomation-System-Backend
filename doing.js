@@ -5,28 +5,19 @@ var db = require("./db");
 module.exports = {
   getAll: (request, response) => {
     db.select(data => {
-      let res = {
-        meta: 200,
-        data: data
-      };
-      response.end(JSON.stringify(res));
+      response.end(JSON.stringify(data));
     });
   },
 
   getOne: (request, response) => {
     var id = url.parse(request.url, true).query.id;
     console.log(url.parse(request.url, true).query.id);
-    db.where(`id=${id}`).select(data => {
-      let res = {
-        meta: 200,
-        data: data
-      };
-      response.end(JSON.stringify(res));
+    db.where(`studentid="${id}"`).select(data => {
+      response.end(JSON.stringify(data));
     });
   },
 
   add: (request, response) => {
-    // coding
     var data_post = "";
     request.on("data", data_n => {
       data_post += data_n;
@@ -43,7 +34,7 @@ module.exports = {
 
   delete: (request, response) => {
     var id = url.parse(request.url, true).query.id;
-    db.where(`id=${id}`).delete(datas => {
+    db.where(`studentid="${id}"`).delete(datas => {
       response.end(JSON.stringify({ meta: 200 }));
     });
   }

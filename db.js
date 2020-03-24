@@ -64,7 +64,6 @@ module.exports = {
     var sql = `insert into student (studentid,name,age,score) values ${set} ;`;
 
     connection.query(sql, (err, datas) => {
-      //console.log(sql);
       callback(datas.changedRows);
     });
   },

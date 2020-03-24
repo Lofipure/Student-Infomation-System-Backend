@@ -3,7 +3,7 @@ const app = express();
 const port = 3000;
 var router = require("./router");
 // 跨域设置
-app.all("*", function(req, res, next) {
+app.all("*", function (req, res, next) {
   res.header("Access-Control-Allow-Methods", "PUT, POST, GET, DELETE, OPTIONS");
   res.header("Access-Control-Allow-Origin", "*");
   next();
